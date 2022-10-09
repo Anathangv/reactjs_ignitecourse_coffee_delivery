@@ -1,5 +1,12 @@
+import { Header } from './components/Header'
+
 function App() {
-  return <div>fun world</div>
+  return (
+    <>
+      <Header />
+      <div>fun world</div>
+    </>
+  )
 }
 
 export default App
