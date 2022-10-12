@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const CoffeeListContainer = styled.section`
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
+  margin-bottom: 9.813rem;
 
   h3 {
     font-family: 'Baloo 2';
@@ -16,8 +16,9 @@ export const CoffeeListContainer = styled.section`
 
   > div {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-start;
     flex-flow: wrap;
-    gap: 2rem;
+    gap: 2.5rem 2rem;
   }
 `

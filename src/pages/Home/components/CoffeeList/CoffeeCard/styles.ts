@@ -12,6 +12,12 @@ export const CoffeeCardContainer = styled.div`
   border-radius: 6px 36px;
   background-color: ${(props) => props.theme['purple-light']};
 
+  & > div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
   img {
     width: 7.5rem;
     height: 7.5rem;

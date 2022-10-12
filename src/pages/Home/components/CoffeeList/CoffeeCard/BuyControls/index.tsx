@@ -2,12 +2,16 @@ import { ShoppingCartSimple } from 'phosphor-react'
 import { Counter } from './Counter'
 import { ActionArea, BuyFormContainer, PriceArea } from './styles'
 
-export function BuyForm() {
+interface IBuyControlsProps {
+  value: number
+}
+
+export function BuyControls({ value }: IBuyControlsProps) {
   return (
     <BuyFormContainer>
       <PriceArea>
         <span>R$</span>
-        <span>9,90</span>
+        <span>{value}</span>
       </PriceArea>
       <ActionArea>
         <Counter />
