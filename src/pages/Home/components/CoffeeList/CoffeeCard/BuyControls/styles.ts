@@ -35,6 +35,7 @@ export const ActionArea = styled.div`
     background-color: ${(props) => props.theme['purple-dark']};
     padding: 0.5rem;
     border-radius: 6px;
+    transition: 0.2s;
   }
 
   > svg:hover {

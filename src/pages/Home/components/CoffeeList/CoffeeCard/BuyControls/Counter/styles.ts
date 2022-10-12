@@ -11,6 +11,7 @@ export const CounterContainer = styled.div`
 
   svg {
     color: ${(props) => props.theme.purple};
+    transition: 0.2s;
   }
 
   svg:hover {

@@ -5,6 +5,8 @@ export const IntroContainer = styled.section`
   flex-direction: row;
   margin: 5.875rem 0;
   gap: 1rem;
+  background-image: url('https://www.kindpng.com/picc/m/726-7269968_blue-dust-png-parallel-transparent-png.png');
+  background-size: cover;
 
   & > div {
     display: flex;
