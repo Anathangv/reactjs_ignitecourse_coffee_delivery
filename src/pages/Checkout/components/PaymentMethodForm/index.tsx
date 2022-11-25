@@ -6,7 +6,6 @@ export function PaymentMethodForm() {
   const { register, formState } = useFormContext()
 
   const paymentErro = !!formState.errors?.paymentMethod
-  console.log(paymentErro, formState.errors?.paymentMethod, formState)
 
   return (
     <PaymentMethodContainer>

@@ -46,7 +46,6 @@ export function DeliveryAddressForm() {
         maxLength={2}
         {...register('state')}
       />
-      <button type="submit">teste</button>
     </DeliveryAddressContainer>
   )
 }

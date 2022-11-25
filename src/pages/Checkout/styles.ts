@@ -7,11 +7,11 @@ export const CheckoutContainer = styled.div`
   margin: 2.5rem auto;
   width: 70rem;
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
-  article {
+  /* article {
     border: 1px solid green;
-  }
+  } */
 
   & > article {
     > header h3 {
@@ -32,7 +32,11 @@ export const CheckoutContainer = styled.div`
     }
   }
 
-  aside {
+  & > article:nth-child(2) {
     width: 28rem;
   }
+
+  /* aside {
+    width: 28rem;
+  } */
 `

@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { Frame } from './components/Frame'
 import { PaymentMethodForm } from './components/PaymentMethodForm'
+import { OrderDetailForm } from './components/OrderDetailForm'
 
 const deliveryAddressFormValidationSchema = zod.object({
   zipCode: zod.string().min(1, { message: 'Necessário informar campo' }),
@@ -64,7 +65,9 @@ export function Checkout() {
               </Card>
             </Frame>
             <Frame title="Cafés selecionado">
-              <aside></aside>
+              <Card customBorderRadius="6px 44px">
+                <OrderDetailForm />
+              </Card>
             </Frame>
           </CheckoutContainer>
         </FormProvider>

@@ -7,15 +7,28 @@ export const CounterContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.5rem;
 
   svg {
     color: ${(props) => props.theme.purple};
     transition: 0.2s;
+    display: flex;
   }
 
   svg:hover {
     color: ${(props) => props.theme['purple-dark']};
     cursor: pointer;
+  }
+`
+
+export const PlusMinusArea = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  transition: 0.4s;
+  border-radius: 6px;
+  padding: 0rem 0.5rem;
+
+  &:hover {
+    background: ${(props) => props.theme['base-hover']};
   }
 `
