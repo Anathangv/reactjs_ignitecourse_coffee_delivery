@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  border: 1px solid black;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +9,10 @@ export const HeaderContainer = styled.header`
   & > img {
     width: 5.309rem;
     height: 2.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   & > div {

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { SelectedCoffee } from '../SelectedCoffee'
 import {
   ButtonConfirmOrder,
@@ -6,6 +7,12 @@ import {
 } from './styles'
 
 export function OrderDetailForm() {
+  const navegate = useNavigate()
+
+  function handleConfirmOrder() {
+    navegate('/Sucesso')
+  }
+
   return (
     <OrderDetailFormContainer>
       <SelectedCoffee />
@@ -32,7 +39,9 @@ export function OrderDetailForm() {
         </div>
       </PaymentDetailsContainer>
 
-      <ButtonConfirmOrder>CONFIRMAR PEDIDO</ButtonConfirmOrder>
+      <ButtonConfirmOrder onClick={handleConfirmOrder}>
+        CONFIRMAR PEDIDO
+      </ButtonConfirmOrder>
     </OrderDetailFormContainer>
   )
 }

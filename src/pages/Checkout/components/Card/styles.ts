@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export type IconColorVariant = 'yellow-dark' | 'purple'
+export type IconColorVariant = 'yellow-dark' | 'purple' | 'yellow'
 
 interface ICardProps {
   iconColor?: IconColorVariant

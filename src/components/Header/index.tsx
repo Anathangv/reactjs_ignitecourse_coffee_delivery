@@ -7,13 +7,21 @@ import { HeaderContainer, LocationContainer } from './styles'
 export function Header() {
   const navegate = useNavigate()
 
-  function handleClick() {
+  function handleClickCheckout() {
     navegate('/Checkout')
+  }
+
+  function handleClickHome() {
+    navegate('/')
   }
 
   return (
     <HeaderContainer>
-      <img src={logoCoffeeDelivery} alt="logo coffee delivery" />
+      <img
+        src={logoCoffeeDelivery}
+        alt="logo coffee delivery"
+        onClick={handleClickHome}
+      />
       <div>
         <LocationContainer>
           <MapPin size={22} weight="fill" />
@@ -22,7 +30,7 @@ export function Header() {
         <img
           src={cartEmpty}
           alt="imagem do carrinho de compra"
-          onClick={handleClick}
+          onClick={handleClickCheckout}
         />
       </div>
     </HeaderContainer>
