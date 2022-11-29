@@ -10,7 +10,7 @@ export const CoffeeCardContainer = styled.div`
   width: 16rem;
   height: 19.375rem;
   border-radius: 6px 36px;
-  background-color: ${(props) => props.theme['purple-light']};
+  background-color: ${(props) => props.theme['base-card']};
 
   & > div {
     display: flex;

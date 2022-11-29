@@ -1,5 +1,5 @@
 import { ShoppingCartSimple } from 'phosphor-react'
-import { Counter } from './Counter'
+import { Counter } from '../../../../components/Counter'
 import { ActionArea, BuyFormContainer, PriceArea } from './styles'
 
 interface IBuyControlsProps {

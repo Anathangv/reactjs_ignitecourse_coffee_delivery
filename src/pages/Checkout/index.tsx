@@ -33,8 +33,6 @@ export function Checkout() {
     console.log('handleSubmit', data)
   }
 
-  console.log('checkoutForm', checkoutForm)
-
   const { handleSubmit } = checkoutForm
 
   return (

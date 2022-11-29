@@ -1,5 +1,5 @@
 import { coffeeList } from '../../../../util/coffeesDB'
-import { CoffeeCard } from './CoffeeCard'
+import { CoffeeCard } from '../CoffeeCard'
 import { CoffeeListContainer } from './styles'
 
 export function CoffeeList() {

@@ -1,6 +1,6 @@
 import { SelectedCoffeeContainer, Details, ButtonRemove } from './styles'
 import { coffeeList } from '../../../../util/coffeesDB'
-import { Counter } from '../../../Home/components/CoffeeList/CoffeeCard/BuyControls/Counter'
+import { Counter } from '../../../../components/Counter'
 import { Trash } from 'phosphor-react'
 
 export function SelectedCoffee() {

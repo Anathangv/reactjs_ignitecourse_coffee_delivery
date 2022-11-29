@@ -1,6 +1,6 @@
-import { BuyControls } from './BuyControls'
-import { CoffeType } from './CoffeeType'
-import { Icoffee } from '../../../../../util/coffeesDB'
+import { BuyControls } from '../BuyControls'
+import { CoffeType } from '../CoffeeType'
+import { Icoffee } from '../../../../util/coffeesDB'
 import { CoffeeCardContainer, Description, Name } from './styles'
 
 interface ICofeeCardProps {
