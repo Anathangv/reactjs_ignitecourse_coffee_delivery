@@ -10,13 +10,6 @@ export const CounterContainer = styled.div`
 
   svg {
     color: ${(props) => props.theme.purple};
-    transition: 0.2s;
-    display: flex;
-  }
-
-  svg:hover {
-    color: ${(props) => props.theme['purple-dark']};
-    cursor: pointer;
   }
 `
 
@@ -30,5 +23,6 @@ export const PlusMinusArea = styled.div`
 
   &:hover {
     background: ${(props) => props.theme['base-hover']};
+    cursor: pointer;
   }
 `

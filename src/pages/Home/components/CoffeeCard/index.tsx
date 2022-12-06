@@ -8,7 +8,7 @@ interface ICofeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: ICofeeCardProps) {
-  const { description, imageName, name, categories, value } = coffee
+  const { description, imageName, name, categories } = coffee
 
   return (
     <CoffeeCardContainer>
@@ -20,7 +20,7 @@ export function CoffeeCard({ coffee }: ICofeeCardProps) {
       </div>
       <Name>{name}</Name>
       <Description>{description}</Description>
-      <BuyControls value={value} />
+      <BuyControls coffee={coffee} />
     </CoffeeCardContainer>
   )
 }

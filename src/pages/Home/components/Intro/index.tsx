@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import introCoffee from '../../../../assets/intro_coffee.png'
-import { Perk } from './Perk'
+import { Perk } from '../Perk'
 
 import { IntroContainer, PerksContainer } from './styles'
 

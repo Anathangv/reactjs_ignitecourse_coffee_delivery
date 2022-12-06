@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface IActionAreaStylesProps {
+  coffeeAmount: number
+}
+
 export const BuyFormContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -24,21 +28,25 @@ export const PriceArea = styled.div`
     line-height: 1.95rem;
   }
 `
-export const ActionArea = styled.div`
+export const ActionArea = styled.div<IActionAreaStylesProps>`
   display: flex;
   flex: row;
   gap: 0.5rem;
 
   > svg {
     color: ${(props) => props.theme.background};
-    background-color: ${(props) => props.theme['purple-dark']};
+    background-color: ${(props) =>
+      props.coffeeAmount
+        ? props.theme['purple-dark']
+        : props.theme['purple-light']};
     padding: 0.5rem;
     border-radius: 6px;
     transition: 0.4s;
   }
 
   > svg:hover {
-    cursor: pointer;
-    background-color: ${(props) => props.theme.purple};
+    cursor: ${(props) => (props.coffeeAmount ? 'pointer' : 'default')};
+    background-color: ${(props) =>
+      props.coffeeAmount ? props.theme.purple : ''};
   }
 `
