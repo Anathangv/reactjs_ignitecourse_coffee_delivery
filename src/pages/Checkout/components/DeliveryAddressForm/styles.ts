@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const DeliveryAddressContainer = styled.div`
   display: grid;
-  grid-template-columns: 12.5rem 17.25rem 3.75rem;
+  grid-template-columns: 12rem 17rem 4.5rem;
 
   grid-column-gap: 12px;
   grid-row-gap: 16px;

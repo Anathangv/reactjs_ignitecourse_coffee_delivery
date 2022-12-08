@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-interface InputStyledPros {
+interface SelectStyledPros {
   error: boolean
 }
 
-export const InputStyled = styled.input<InputStyledPros>`
+export const SelectStyled = styled.select<SelectStyledPros>`
   height: 2.625rem;
   padding: 0.75rem;
   border: 1px solid

@@ -1,6 +1,9 @@
 import { DeliveryAddressContainer } from './styles'
 import { Input } from '../Input'
 import { useFormContext } from 'react-hook-form'
+import { CepMask } from '../../../../util/masks'
+import { StatesDb } from '../../../../util/uf'
+import { Select } from '../Select'
 
 export function DeliveryAddressForm() {
   const { register, formState } = useFormContext()
@@ -13,6 +16,9 @@ export function DeliveryAddressForm() {
         className="zipCode"
         error={!!formState.errors?.zipCode}
         {...register('zipCode')}
+        onChange={(event) => {
+          event.target.value = CepMask(event.target.value)
+        }}
       />
       <Input
         placeholder="Rua"
@@ -22,6 +28,7 @@ export function DeliveryAddressForm() {
       />
       <Input
         placeholder="Número"
+        type="number"
         error={!!formState.errors?.number}
         {...register('number')}
       />
@@ -40,12 +47,19 @@ export function DeliveryAddressForm() {
         error={!!formState.errors?.city}
         {...register('city')}
       />
-      <Input
+      <Select
+        itens={StatesDb}
         placeholder="UF"
         error={!!formState.errors?.state}
         maxLength={2}
         {...register('state')}
       />
+      {/* <Input
+        placeholder="UF"
+        error={!!formState.errors?.state}
+        maxLength={2}
+        {...register('state')}
+      /> */}
     </DeliveryAddressContainer>
   )
 }

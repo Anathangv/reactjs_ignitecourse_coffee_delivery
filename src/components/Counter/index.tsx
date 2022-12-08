@@ -3,16 +3,21 @@ import { CounterContainer, PlusMinusArea } from './styles'
 
 interface ICounterPros {
   coffeeAmount: number
+  minimumAmountControl?: number
   updateCoffeeAmount: (coffeeAmount: number) => void
 }
 
-export function Counter({ coffeeAmount, updateCoffeeAmount }: ICounterPros) {
+export function Counter({
+  coffeeAmount,
+  minimumAmountControl = 0,
+  updateCoffeeAmount,
+}: ICounterPros) {
   function handleIncrementCoffeeAmount() {
     updateCoffeeAmount(1)
   }
 
   function handleDecrementCoffeeAmount() {
-    if (coffeeAmount > 0) {
+    if (coffeeAmount > minimumAmountControl) {
       updateCoffeeAmount(-1)
     }
   }

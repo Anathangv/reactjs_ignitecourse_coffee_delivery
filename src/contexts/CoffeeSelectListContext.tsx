@@ -29,15 +29,6 @@ export function CoffeeSelectListProvider({
     console.log('useEffect', selectedCoffeeList, selectedCoffeeList.length)
   }, [selectedCoffeeList])
 
-  function removeCoffeeFromList(coffee: Icoffee) {
-    if (selectedCoffeeList.length > 0) {
-      const selectedCoffeeListUpdated = selectedCoffeeList.filter(
-        (selectedCoffee) => selectedCoffee.coffee.name !== coffee.name,
-      )
-      setSelectedCoffeeList(selectedCoffeeListUpdated)
-    }
-  }
-
   function addOrUpdateCoffeeList(coffee: Icoffee, amount: number) {
     const selectedCoffeeIndex = selectedCoffeeList.findIndex(
       (c) => c.coffee === coffee,
@@ -61,6 +52,15 @@ export function CoffeeSelectListProvider({
           amount,
         } as ISelectedCoffee,
       ])
+    }
+  }
+
+  function removeCoffeeFromList(coffee: Icoffee) {
+    if (selectedCoffeeList.length > 0) {
+      const selectedCoffeeListUpdated = selectedCoffeeList.filter(
+        (selectedCoffee) => selectedCoffee.coffee.name !== coffee.name,
+      )
+      setSelectedCoffeeList(selectedCoffeeListUpdated)
     }
   }
 
