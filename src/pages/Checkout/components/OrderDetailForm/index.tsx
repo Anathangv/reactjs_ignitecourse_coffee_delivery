@@ -1,4 +1,3 @@
-// import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { CoffeeListContext } from '../../../../contexts/CoffeeSelectListContext'
 import { SelectedCoffee } from '../SelectedCoffee'
@@ -11,11 +10,6 @@ import {
 export function OrderDetailForm() {
   const { selectedCoffeeList } = useContext(CoffeeListContext)
 
-  // const navegate = useNavigate()
-
-  // function handleConfirmOrder() {
-  //   navegate('/Sucesso')
-  // }
   const DELIVERY_FEE = 3.5
 
   const totalItens = selectedCoffeeList.reduce(
@@ -35,10 +29,6 @@ export function OrderDetailForm() {
             selectedCoffee={selectCoffee}
           />
         ))}
-      {/* <SelectedCoffee />
-      <hr />
-      <SelectedCoffee />
-      <hr /> */}
 
       <PaymentDetailsContainer>
         <div>
@@ -58,7 +48,6 @@ export function OrderDetailForm() {
           </span>
         </div>
       </PaymentDetailsContainer>
-      {/* <ButtonConfirmOrder type="submit">  onClick={handleConfirmOrder}> */}
       <ButtonConfirmOrder type="submit">CONFIRMAR PEDIDO</ButtonConfirmOrder>
     </OrderDetailFormContainer>
   )

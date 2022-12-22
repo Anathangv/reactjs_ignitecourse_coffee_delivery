@@ -29,6 +29,7 @@ export function DeliveryAddressForm() {
       <Input
         placeholder="Número"
         type="number"
+        min={1}
         error={!!formState.errors?.number}
         {...register('number')}
       />

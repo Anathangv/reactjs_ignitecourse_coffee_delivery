@@ -12,8 +12,8 @@ export const Select = React.forwardRef<HTMLSelectElement, ISelectProps>(
     const { error, itens, ...rest } = props
     return (
       <>
-        <SelectStyled ref={ref} error={!!error} {...rest}>
-          <option key={'none'} value={''}>
+        <SelectStyled defaultValue={''} ref={ref} error={!!error} {...rest}>
+          <option disabled={true} value={''}>
             UF
           </option>
           {itens &&

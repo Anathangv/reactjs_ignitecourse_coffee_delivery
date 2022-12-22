@@ -34,7 +34,9 @@ export function CoffeeSelectListProvider({
       (c) => c.coffee === coffee,
     )
 
-    if (selectedCoffeeIndex >= 0) {
+    const updateCoffeeFromList = selectedCoffeeIndex >= 0
+
+    if (updateCoffeeFromList) {
       const selectedCoffeeListUpdated = [...selectedCoffeeList]
 
       selectedCoffeeListUpdated[selectedCoffeeIndex] = {
