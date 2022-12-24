@@ -18,7 +18,16 @@ import { useNavigate } from 'react-router-dom'
 /*
 TODO
 [] - include loading while submitting order
+[] - set button not navigable while loadin
+[] - if try access the page skipping the home, refirect to home page
+[] - create not found page
+[] - try to make a request from a valid cep 
 */
+const PaymentMethods = {
+  creditCard: 'Cartão de Credito',
+  debitCard: 'Cartão de Débito',
+  cash: 'Dinheiro',
+}
 
 const deliveryAddressFormValidationSchema = zod.object({
   zipCode: zod.string().min(1, { message: 'Necessário informar campo' }),
@@ -31,7 +40,7 @@ const deliveryAddressFormValidationSchema = zod.object({
   paymentMethod: zod.enum(['creditCard', 'debitCard', 'cash']),
 })
 
-type CoffeeDeliverFormData = zod.infer<
+export type CoffeeDeliverFormData = zod.infer<
   typeof deliveryAddressFormValidationSchema
 >
 
@@ -42,10 +51,19 @@ interface ICheckoutOrder {
   total: number
 }
 
-export function Checkout() {
-  const { selectedCoffeeList } = useContext(CoffeeListContext)
+export interface ISuccessInformation {
+  district: string
+  paymentMethod: string
+  city: string
+  number: number
+  street: string
+  stateAbreviation: string
+}
 
-  const navegate = useNavigate()
+export function Checkout() {
+  const { selectedCoffeeList, cleanChart } = useContext(CoffeeListContext)
+
+  const navigate = useNavigate()
 
   const checkoutForm = useForm<CoffeeDeliverFormData>({
     resolver: zodResolver(deliveryAddressFormValidationSchema),
@@ -68,7 +86,19 @@ export function Checkout() {
     }
 
     await fakeApiCallTimeout(order)
-    navegate('/Sucesso')
+
+    navigate('/Sucesso', {
+      state: {
+        city: deliveryAddress.city,
+        district: deliveryAddress.district,
+        number: deliveryAddress.number,
+        stateAbreviation: deliveryAddress.state,
+        street: deliveryAddress.street,
+        paymentMethod: PaymentMethods[deliveryAddress.paymentMethod],
+      },
+    })
+
+    cleanChart()
   }
 
   const { handleSubmit } = checkoutForm

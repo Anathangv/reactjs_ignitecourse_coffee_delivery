@@ -1,8 +1,29 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { OrderInfoContainer, OrderInfoItem, SuccessContainer } from './styles'
 import successDelivery from '../../assets/success_delivery.png'
+// import { useContext } from 'react'
+// import { CoffeeListContext } from '../../contexts/CoffeeSelectListContext'
+import { useLocation } from 'react-router-dom'
+import { ISuccessInformation } from '../Checkout'
+
+export interface ILocationSuccess {
+  state: ISuccessInformation
+}
+
+/*
+TODO
+[x] - save delivery address information in the context
+*/
 
 export function Success() {
+  const { state } = useLocation() as unknown as ILocationSuccess
+
+  const { district, paymentMethod, city, number, street, stateAbreviation } =
+    state
+
+  const aux = useLocation()
+  console.log('aux', aux)
+
   return (
     <SuccessContainer>
       <span>
@@ -15,9 +36,9 @@ export function Success() {
             <MapPin size={32} weight="fill" />
             <div>
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em <strong>{`${street},${number}`}</strong>
               </span>
-              <span>Farrapos - Porto Alegre, RS</span>
+              <span>{`${district} - ${city}, ${stateAbreviation}`}</span>
             </div>
           </OrderInfoItem>
           <OrderInfoItem iconColor="yellow">
@@ -34,14 +55,14 @@ export function Success() {
             <div>
               <span>Pagamento na entrega</span>
               <span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod}</strong>
               </span>
             </div>
           </OrderInfoItem>
         </OrderInfoContainer>
         <img
           src={successDelivery}
-          alt="imagem de um homem pilatondo uma moto com um pacote na garupa"
+          alt="imagem de um homem pilatando uma moto com um pacote na garupa"
         />
       </div>
     </SuccessContainer>

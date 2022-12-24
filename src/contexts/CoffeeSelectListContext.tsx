@@ -1,5 +1,10 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { createContext, ReactNode, useState } from 'react'
 import { Icoffee } from '../util/coffeesDB'
+
+/*
+TODO
+[] - rename context to ChartContext
+*/
 
 export interface ISelectedCoffee {
   coffee: Icoffee
@@ -8,8 +13,10 @@ export interface ISelectedCoffee {
 
 interface ICofeeListContext {
   selectedCoffeeList: ISelectedCoffee[]
+  totalCoffees: () => number
   addOrUpdateCoffeeList: (coffee: Icoffee, amount: number) => void
   removeCoffeeFromList: (coffee: Icoffee) => void
+  cleanChart: () => void
 }
 
 interface ICoffeeListContextProps {
@@ -25,9 +32,11 @@ export function CoffeeSelectListProvider({
     ISelectedCoffee[]
   >([])
 
-  useEffect(() => {
-    console.log('useEffect', selectedCoffeeList, selectedCoffeeList.length)
-  }, [selectedCoffeeList])
+  const totalCoffees = () =>
+    selectedCoffeeList.reduce(
+      (result, coffeeList) => result + coffeeList.amount,
+      0,
+    )
 
   function addOrUpdateCoffeeList(coffee: Icoffee, amount: number) {
     const selectedCoffeeIndex = selectedCoffeeList.findIndex(
@@ -66,12 +75,18 @@ export function CoffeeSelectListProvider({
     }
   }
 
+  function cleanChart() {
+    setSelectedCoffeeList([])
+  }
+
   return (
     <CoffeeListContext.Provider
       value={{
         selectedCoffeeList,
+        totalCoffees,
         addOrUpdateCoffeeList,
         removeCoffeeFromList,
+        cleanChart,
       }}
     >
       {children}

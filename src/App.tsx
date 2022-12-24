@@ -7,14 +7,14 @@ import { defaultTheme } from './styles/themes/default'
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <CoffeeSelectListProvider>
+    <CoffeeSelectListProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <BrowserRouter>
           <Router />
-        </CoffeeSelectListProvider>
-      </BrowserRouter>
-      <GlobalStyle />
-    </ThemeProvider>
+        </BrowserRouter>
+        <GlobalStyle />
+      </ThemeProvider>
+    </CoffeeSelectListProvider>
   )
 }
 

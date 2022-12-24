@@ -1,10 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import logoCoffeeDelivery from '../../assets/logo.png'
-import cartEmpty from '../../assets/cart_empty.png'
-import { MapPin } from 'phosphor-react'
-import { HeaderContainer, LocationContainer } from './styles'
-
+import { MapPin, ShoppingCart } from 'phosphor-react'
+import { HeaderContainer, LocationContainer, Cart, Badge } from './styles'
+import { useContext } from 'react'
+import { CoffeeListContext } from '../../contexts/CoffeeSelectListContext'
+/*
+TODO
+[] - align header icons with the page body
+[] - include control to only clicl on cart if there is coffee selected
+[x] - include coffee count in the chart icon
+*/
 export function Header() {
+  const { totalCoffees } = useContext(CoffeeListContext)
   const navegate = useNavigate()
 
   function handleClickCheckout() {
@@ -27,11 +34,10 @@ export function Header() {
           <MapPin size={22} weight="fill" />
           <span>Fortaleza-CE</span>
         </LocationContainer>
-        <img
-          src={cartEmpty}
-          alt="imagem do carrinho de compra"
-          onClick={handleClickCheckout}
-        />
+        <Cart onClick={handleClickCheckout}>
+          <Badge>{totalCoffees()}</Badge>
+          <ShoppingCart size={22} weight="fill" />
+        </Cart>
       </div>
     </HeaderContainer>
   )
