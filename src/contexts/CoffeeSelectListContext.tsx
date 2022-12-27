@@ -13,7 +13,7 @@ export interface ISelectedCoffee {
 
 interface ICofeeListContext {
   selectedCoffeeList: ISelectedCoffee[]
-  totalCoffees: () => number
+  totalCoffees: number
   addOrUpdateCoffeeList: (coffee: Icoffee, amount: number) => void
   removeCoffeeFromList: (coffee: Icoffee) => void
   cleanChart: () => void
@@ -32,11 +32,10 @@ export function CoffeeSelectListProvider({
     ISelectedCoffee[]
   >([])
 
-  const totalCoffees = () =>
-    selectedCoffeeList.reduce(
-      (result, coffeeList) => result + coffeeList.amount,
-      0,
-    )
+  const totalCoffees = selectedCoffeeList.reduce(
+    (result, coffeeList) => result + coffeeList.amount,
+    0,
+  )
 
   function addOrUpdateCoffeeList(coffee: Icoffee, amount: number) {
     const selectedCoffeeIndex = selectedCoffeeList.findIndex(

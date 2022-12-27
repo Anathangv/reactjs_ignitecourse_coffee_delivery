@@ -7,7 +7,7 @@ import { CoffeeListContext } from '../../contexts/CoffeeSelectListContext'
 /*
 TODO
 [] - align header icons with the page body
-[] - include control to only clicl on cart if there is coffee selected
+[x] - include control to only clicl on cart if there is coffee selected
 [x] - include coffee count in the chart icon
 */
 export function Header() {
@@ -15,7 +15,9 @@ export function Header() {
   const navegate = useNavigate()
 
   function handleClickCheckout() {
-    navegate('/Checkout')
+    if (totalCoffees) {
+      navegate('/Checkout')
+    }
   }
 
   function handleClickHome() {
@@ -34,8 +36,8 @@ export function Header() {
           <MapPin size={22} weight="fill" />
           <span>Fortaleza-CE</span>
         </LocationContainer>
-        <Cart onClick={handleClickCheckout}>
-          <Badge>{totalCoffees()}</Badge>
+        <Cart onClick={handleClickCheckout} isEnable={!!totalCoffees}>
+          {!!totalCoffees && <Badge>{totalCoffees}</Badge>}
           <ShoppingCart size={22} weight="fill" />
         </Cart>
       </div>

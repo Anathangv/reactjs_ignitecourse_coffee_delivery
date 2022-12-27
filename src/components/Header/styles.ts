@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface ICart {
+  isEnable: boolean
+}
+
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -23,7 +27,7 @@ export const HeaderContainer = styled.header`
   }
 `
 
-export const Cart = styled.div`
+export const Cart = styled.div<ICart>`
   width: 2.375rem;
   height: 2.375rem;
   position: relative;
@@ -33,6 +37,7 @@ export const Cart = styled.div`
   border-radius: 6px;
   background-color: ${(props) => props.theme['yellow-light']};
   transition: 0.4s;
+  opacity: ${(props) => (props.isEnable ? 1 : 0.5)};
 
   svg {
     color: ${(props) => props.theme['yellow-dark']};
@@ -40,11 +45,11 @@ export const Cart = styled.div`
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.yellow};
-    cursor: pointer;
+    background-color: ${(props) => (props.isEnable ? props.theme.yellow : '')};
+    cursor: ${(props) => (props.isEnable ? 'pointer' : 'default')};
 
     svg {
-      color: ${(props) => props.theme['yellow-light']};
+      color: ${(props) => (props.isEnable ? props.theme['yellow-light'] : '')};
     }
   }
 `
@@ -54,11 +59,10 @@ export const Badge = styled.span`
   right: -0.7rem;
   position: absolute;
   text-align: center;
-  padding: 0.3rem 0.4rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 50%;
   background-color: ${(props) => props.theme['yellow-dark']};
   font-size: 0.75rem;
-  line-height: 0.975rem;
   font-size: 700;
   color: ${(props) => props.theme.white};
 `
