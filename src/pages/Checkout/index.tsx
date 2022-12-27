@@ -11,7 +11,7 @@ import { OrderDetailForm } from './components/OrderDetailForm'
 import {
   CoffeeListContext,
   ISelectedCoffee,
-} from '../../contexts/CoffeeSelectListContext'
+} from '../../contexts/ShoppingCartProvider'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 

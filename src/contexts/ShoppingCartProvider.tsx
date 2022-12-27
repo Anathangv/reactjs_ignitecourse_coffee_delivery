@@ -1,11 +1,6 @@
 import { createContext, ReactNode, useState } from 'react'
 import { Icoffee } from '../util/coffeesDB'
 
-/*
-TODO
-[] - rename context to ChartContext
-*/
-
 export interface ISelectedCoffee {
   coffee: Icoffee
   amount: number
@@ -19,15 +14,13 @@ interface ICofeeListContext {
   cleanChart: () => void
 }
 
-interface ICoffeeListContextProps {
+interface IShoppingCartProviderProps {
   children: ReactNode
 }
 
 export const CoffeeListContext = createContext({} as ICofeeListContext)
 
-export function CoffeeSelectListProvider({
-  children,
-}: ICoffeeListContextProps) {
+export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
   const [selectedCoffeeList, setSelectedCoffeeList] = useState<
     ISelectedCoffee[]
   >([])

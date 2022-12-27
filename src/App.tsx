@@ -1,20 +1,20 @@
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { CoffeeSelectListProvider } from './contexts/CoffeeSelectListContext'
+import { ShoppingCartProvider } from './contexts/ShoppingCartProvider'
 import { Router } from './Router'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
 function App() {
   return (
-    <CoffeeSelectListProvider>
+    <ShoppingCartProvider>
       <ThemeProvider theme={defaultTheme}>
         <BrowserRouter>
           <Router />
         </BrowserRouter>
         <GlobalStyle />
       </ThemeProvider>
-    </CoffeeSelectListProvider>
+    </ShoppingCartProvider>
   )
 }
 

@@ -1,7 +1,7 @@
 import { ShoppingCartSimple } from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { Counter } from '../../../../components/Counter'
-import { CoffeeListContext } from '../../../../contexts/CoffeeSelectListContext'
+import { CoffeeListContext } from '../../../../contexts/ShoppingCartProvider'
 import { Icoffee } from '../../../../util/coffeesDB'
 import { ActionArea, BuyFormContainer, PriceArea } from './styles'
 

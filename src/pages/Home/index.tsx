@@ -4,6 +4,7 @@ import { HomeContainer } from './styles'
 
 /*
 [] - align coffees in the center
+[] - when return from checkout page display selected coffees
 */
 
 export function Home() {

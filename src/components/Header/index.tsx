@@ -3,7 +3,7 @@ import logoCoffeeDelivery from '../../assets/logo.png'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { HeaderContainer, LocationContainer, Cart, Badge } from './styles'
 import { useContext } from 'react'
-import { CoffeeListContext } from '../../contexts/CoffeeSelectListContext'
+import { CoffeeListContext } from '../../contexts/ShoppingCartProvider'
 /*
 TODO
 [] - align header icons with the page body

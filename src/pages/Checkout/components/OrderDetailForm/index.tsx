@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { CoffeeListContext } from '../../../../contexts/CoffeeSelectListContext'
+import { CoffeeListContext } from '../../../../contexts/ShoppingCartProvider'
 import { SelectedCoffee } from '../SelectedCoffee'
 import {
   ButtonConfirmOrder,

@@ -4,7 +4,7 @@ import { Trash } from 'phosphor-react'
 import {
   CoffeeListContext,
   ISelectedCoffee,
-} from '../../../../contexts/CoffeeSelectListContext'
+} from '../../../../contexts/ShoppingCartProvider'
 import { useContext } from 'react'
 
 interface ISelectedCoffeeProps {
