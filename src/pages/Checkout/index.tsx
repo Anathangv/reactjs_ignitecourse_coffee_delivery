@@ -12,13 +12,13 @@ import {
   CoffeeListContext,
   ISelectedCoffee,
 } from '../../contexts/ShoppingCartProvider'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 /*
 TODO
-[] - include loading while submitting order
-[] - set button not navigable while loadin
+[x] - include loading while submitting order
+[x] - set button not navigable while loadin
 [] - if try access the page skipping the home, refirect to home page
 [] - create not found page
 [] - try to make a request from a valid cep 
@@ -61,6 +61,7 @@ export interface ISuccessInformation {
 }
 
 export function Checkout() {
+  const [submitLoading, setSubmitLoading] = useState(false)
   const { selectedCoffeeList, cleanChart } = useContext(CoffeeListContext)
 
   const navigate = useNavigate()
@@ -69,7 +70,15 @@ export function Checkout() {
     resolver: zodResolver(deliveryAddressFormValidationSchema),
   })
 
+  useEffect(() => {
+    if (!selectedCoffeeList.length) {
+      navigate('/')
+    }
+  })
+
   async function fakeApiCallTimeout(order: ICheckoutOrder) {
+    setSubmitLoading(true)
+
     const timeout = new Promise((resolve) => setTimeout(resolve, 3000))
     return timeout
   }
@@ -99,6 +108,7 @@ export function Checkout() {
     })
 
     cleanChart()
+    setSubmitLoading(false)
   }
 
   const { handleSubmit } = checkoutForm
@@ -128,7 +138,7 @@ export function Checkout() {
             </Frame>
             <Frame title="Cafés selecionado">
               <Card customBorderRadius="6px 44px">
-                <OrderDetailForm />
+                <OrderDetailForm loading={submitLoading} />
               </Card>
             </Frame>
           </CheckoutContainer>

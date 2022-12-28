@@ -6,9 +6,9 @@ import { useContext } from 'react'
 import { CoffeeListContext } from '../../contexts/ShoppingCartProvider'
 /*
 TODO
-[] - align header icons with the page body
 [x] - include control to only clicl on cart if there is coffee selected
 [x] - include coffee count in the chart icon
+[] - keep the header fix while scrowlling down
 */
 export function Header() {
   const { totalCoffees } = useContext(CoffeeListContext)

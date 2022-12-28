@@ -1,28 +1,30 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { OrderInfoContainer, OrderInfoItem, SuccessContainer } from './styles'
 import successDelivery from '../../assets/success_delivery.png'
-// import { useContext } from 'react'
-// import { CoffeeListContext } from '../../contexts/CoffeeSelectListContext'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ISuccessInformation } from '../Checkout'
+import { useEffect } from 'react'
 
 export interface ILocationSuccess {
   state: ISuccessInformation
 }
 
-/*
-TODO
-[x] - save delivery address information in the context
-*/
-
 export function Success() {
-  const { state } = useLocation() as unknown as ILocationSuccess
+  const locationPorps = useLocation() as unknown as ILocationSuccess
+  let state = {} as ISuccessInformation
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!locationPorps.state) {
+      navigate('/')
+    } else {
+      state = locationPorps.state
+    }
+  })
 
   const { district, paymentMethod, city, number, street, stateAbreviation } =
     state
-
-  const aux = useLocation()
-  console.log('aux', aux)
 
   return (
     <SuccessContainer>

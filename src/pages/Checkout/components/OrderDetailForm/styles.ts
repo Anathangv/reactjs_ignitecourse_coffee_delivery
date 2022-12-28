@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface IButtonConfirmOrder {
+  isDisable: boolean
+}
+
 export const OrderDetailFormContainer = styled.div`
   display: block;
 
@@ -38,8 +42,11 @@ export const PaymentDetailsContainer = styled.div`
   }
 `
 
-export const ButtonConfirmOrder = styled.button`
+export const ButtonConfirmOrder = styled.button<IButtonConfirmOrder>`
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 1.5rem;
   padding: 0.75rem 0rem;
   border: none;
@@ -49,10 +56,19 @@ export const ButtonConfirmOrder = styled.button`
   line-height: 1.4rem;
   color: ${(props) => props.theme.white};
   background-color: ${(props) => props.theme.yellow};
+  opacity: ${(props) => (props.isDisable ? 0.5 : 1)};
   transition: 0.4s;
 
   &:hover {
-    background-color: ${(props) => props.theme['yellow-dark']};
-    cursor: pointer;
+    background-color: ${(props) =>
+      props.isDisable ? '' : props.theme['yellow-dark']};
+    cursor: ${(props) => (props.isDisable ? 'default' : 'pointer')};
+  }
+
+  & > svg {
+    margin-right: 0.2rem;
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
   }
 `

@@ -17,7 +17,7 @@ export const CoffeeListContainer = styled.section`
   > div {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-flow: wrap;
     gap: 2.5rem 2rem;
   }

@@ -1,3 +1,4 @@
+import { CircleNotch } from 'phosphor-react'
 import { useContext } from 'react'
 import { CoffeeListContext } from '../../../../contexts/ShoppingCartProvider'
 import { SelectedCoffee } from '../SelectedCoffee'
@@ -7,8 +8,12 @@ import {
   PaymentDetailsContainer,
 } from './styles'
 
-export function OrderDetailForm() {
-  const { selectedCoffeeList } = useContext(CoffeeListContext)
+interface IOrderDetailForm {
+  loading: boolean
+}
+
+export function OrderDetailForm({ loading }: IOrderDetailForm) {
+  const { selectedCoffeeList, totalCoffees } = useContext(CoffeeListContext)
 
   const DELIVERY_FEE = 3.5
 
@@ -20,6 +25,7 @@ export function OrderDetailForm() {
 
   const totalCheckout = totalItens + DELIVERY_FEE
 
+  const isButtonDisable = loading || !totalCoffees
   return (
     <OrderDetailFormContainer>
       {selectedCoffeeList &&
@@ -48,7 +54,10 @@ export function OrderDetailForm() {
           </span>
         </div>
       </PaymentDetailsContainer>
-      <ButtonConfirmOrder type="submit">CONFIRMAR PEDIDO</ButtonConfirmOrder>
+      <ButtonConfirmOrder type="submit" isDisable={isButtonDisable}>
+        {loading && <CircleNotch size={15} weight="fill" />}
+        CONFIRMAR PEDIDO
+      </ButtonConfirmOrder>
     </OrderDetailFormContainer>
   )
 }

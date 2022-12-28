@@ -3,7 +3,7 @@ import { Intro } from './components/Intro'
 import { HomeContainer } from './styles'
 
 /*
-[] - align coffees in the center
+[x] - align coffees in the center
 [] - when return from checkout page display selected coffees
 */
 
