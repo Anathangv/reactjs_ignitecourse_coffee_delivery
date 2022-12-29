@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom'
 TODO
 [x] - include loading while submitting order
 [x] - set button not navigable while loadin
-[] - if try access the page skipping the home, refirect to home page
+[x] - if try access the page skipping the home, refirect to home page
 [] - create not found page
 [] - try to make a request from a valid cep 
 */
