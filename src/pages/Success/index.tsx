@@ -1,27 +1,15 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { OrderInfoContainer, OrderInfoItem, SuccessContainer } from './styles'
 import successDelivery from '../../assets/success_delivery.png'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { ISuccessInformation } from '../Checkout'
-import { useEffect } from 'react'
 
 export interface ILocationSuccess {
   state: ISuccessInformation
 }
 
 export function Success() {
-  const locationPorps = useLocation() as unknown as ILocationSuccess
-  let state = {} as ISuccessInformation
-
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!locationPorps.state) {
-      navigate('/')
-    } else {
-      state = locationPorps.state
-    }
-  })
+  const { state } = useLocation() as unknown as ILocationSuccess
 
   const { district, paymentMethod, city, number, street, stateAbreviation } =
     state
