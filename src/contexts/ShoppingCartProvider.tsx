@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useReducer } from 'react'
 import { Icoffee } from '../util/coffeesDB'
 
 export interface ISelectedCoffee {
@@ -21,9 +21,59 @@ interface IShoppingCartProviderProps {
 export const CoffeeListContext = createContext({} as ICofeeListContext)
 
 export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
-  const [selectedCoffeeList, setSelectedCoffeeList] = useState<
-    ISelectedCoffee[]
-  >([])
+  const [selectedCoffeeList, dispatch] = useReducer(
+    (state: ISelectedCoffee[], action: any) => {
+      console.log('useReducer', state, action)
+
+      if (action.type === 'ADD_OR_UPDATE_COFFEE_LIST') {
+        const selectedCoffeeIndex = state.findIndex(
+          (c) => c.coffee === action.payload.coffee,
+        )
+
+        const coffee = action.payload.coffee
+        const amount = action.payload.amount
+
+        const isUpdate = selectedCoffeeIndex >= 0
+
+        if (isUpdate) {
+          const selectedCoffeeListUpdated = [...state]
+
+          selectedCoffeeListUpdated[selectedCoffeeIndex] = {
+            ...selectedCoffeeListUpdated[selectedCoffeeIndex],
+            coffee,
+            amount,
+          }
+
+          return selectedCoffeeListUpdated
+        } else {
+          return [
+            ...state,
+            {
+              coffee,
+              amount,
+            },
+          ]
+        }
+      }
+
+      if (action.type === 'REMOVE_COFFEE_FROM_LIST') {
+        if (state.length > 0) {
+          const selectedCoffeeListUpdated = state.filter(
+            (selectedCoffee) =>
+              selectedCoffee.coffee.name !== action.payload.coffee?.name,
+          )
+          return selectedCoffeeListUpdated
+        }
+      }
+
+      if (action.type === 'CLEAN_COFFEE_LIST') {
+        return []
+      }
+
+      return state
+    },
+    [],
+  )
 
   const totalCoffees = selectedCoffeeList.reduce(
     (result, coffeeList) => result + coffeeList.amount,
@@ -31,44 +81,26 @@ export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
   )
 
   function addOrUpdateCoffeeList(coffee: Icoffee, amount: number) {
-    const selectedCoffeeIndex = selectedCoffeeList.findIndex(
-      (c) => c.coffee === coffee,
-    )
-
-    const updateCoffeeFromList = selectedCoffeeIndex >= 0
-
-    if (updateCoffeeFromList) {
-      const selectedCoffeeListUpdated = [...selectedCoffeeList]
-
-      selectedCoffeeListUpdated[selectedCoffeeIndex] = {
-        ...selectedCoffeeListUpdated[selectedCoffeeIndex],
+    dispatch({
+      type: 'ADD_OR_UPDATE_COFFEE_LIST',
+      payload: {
         coffee,
         amount,
-      }
-
-      setSelectedCoffeeList(selectedCoffeeListUpdated)
-    } else {
-      setSelectedCoffeeList((list) => [
-        ...list,
-        {
-          coffee,
-          amount,
-        } as ISelectedCoffee,
-      ])
-    }
+      },
+    })
   }
 
   function removeCoffeeFromList(coffee: Icoffee) {
-    if (selectedCoffeeList.length > 0) {
-      const selectedCoffeeListUpdated = selectedCoffeeList.filter(
-        (selectedCoffee) => selectedCoffee.coffee.name !== coffee.name,
-      )
-      setSelectedCoffeeList(selectedCoffeeListUpdated)
-    }
+    dispatch({
+      type: 'REMOVE_COFFEE_FROM_LIST',
+      payload: { coffee },
+    })
   }
 
   function cleanChart() {
-    setSelectedCoffeeList([])
+    dispatch({
+      type: 'CLEAN_COFFEE_LIST',
+    })
   }
 
   return (
