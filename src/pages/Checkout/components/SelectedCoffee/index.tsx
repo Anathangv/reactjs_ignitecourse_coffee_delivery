@@ -1,11 +1,9 @@
 import { SelectedCoffeeContainer, Details, ButtonRemove } from './styles'
 import { Counter } from '../../../../components/Counter'
 import { Trash } from 'phosphor-react'
-import {
-  CoffeeListContext,
-  ISelectedCoffee,
-} from '../../../../contexts/ShoppingCartProvider'
+import { CoffeeListContext } from '../../../../contexts/ShoppingCartProvider'
 import { useContext } from 'react'
+import { ISelectedCoffee } from '../../../../reducers/coffeeList/reducer'
 
 interface ISelectedCoffeeProps {
   selectedCoffee: ISelectedCoffee

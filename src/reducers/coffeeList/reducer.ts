@@ -1,5 +1,11 @@
+import { produce } from 'immer'
 import { Icoffee } from '../../util/coffeesDB'
 import { ActionTypes } from './action'
+
+/*
+TODO
+[] - include type for the parameter action 
+*/
 
 export interface ISelectedCoffee {
   coffee: Icoffee
@@ -13,45 +19,35 @@ export function CoffeeListReducer(state: ISelectedCoffee[], action: any) {
         (c) => c.coffee === action.payload.coffee,
       )
 
-      const coffee = action.payload.coffee
-      const amount = action.payload.amount
-
       const isUpdate = selectedCoffeeIndex >= 0
 
       if (isUpdate) {
-        const selectedCoffeeListUpdated = [...state]
-
-        selectedCoffeeListUpdated[selectedCoffeeIndex] = {
-          ...selectedCoffeeListUpdated[selectedCoffeeIndex],
-          coffee,
-          amount,
-        }
-
-        return selectedCoffeeListUpdated
+        return produce(state, (draft) => {
+          draft[selectedCoffeeIndex].coffee = action.payload.coffee
+          draft[selectedCoffeeIndex].amount = action.payload.amount
+        })
       } else {
-        return [
-          ...state,
-          {
-            coffee,
-            amount,
-          },
-        ]
+        return produce(state, (draft) => {
+          draft.push({
+            coffee: action.payload.coffee,
+            amount: action.payload.amount,
+          })
+        })
       }
     }
     case ActionTypes.REMOVE_COFFEE_FROM_LIST: {
-      if (state.length > 0) {
-        const selectedCoffeeListUpdated = state.filter(
-          (selectedCoffee) =>
-            selectedCoffee.coffee.name !== action.payload.coffee?.name,
-        )
-        return selectedCoffeeListUpdated
-      }
-      break
+      const selectedCoffeeIndex = state.findIndex(
+        (c) => c.coffee === action.payload.coffee,
+      )
+
+      return produce(state, (draft) => {
+        draft.splice(selectedCoffeeIndex, 1)
+      })
     }
     case ActionTypes.CLEAN_COFFEE_LIST:
       return []
     default:
       return state
   }
-  return state
+  // return state
 }
