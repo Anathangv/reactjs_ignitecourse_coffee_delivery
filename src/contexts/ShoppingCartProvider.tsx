@@ -1,5 +1,12 @@
 import { createContext, ReactNode, useReducer } from 'react'
-import { CoffeeListReducer, ISelectedCoffee } from '../reducers/coffeeList'
+import {
+  addOrUpdateCoffeeListAction,
+  removeCoffeeFromListAction,
+} from '../reducers/coffeeList/action'
+import {
+  CoffeeListReducer,
+  ISelectedCoffee,
+} from '../reducers/coffeeList/reducer'
 import { Icoffee } from '../util/coffeesDB'
 
 interface ICofeeListContext {
@@ -7,7 +14,7 @@ interface ICofeeListContext {
   totalCoffees: number
   addOrUpdateCoffeeList: (coffee: Icoffee, amount: number) => void
   removeCoffeeFromList: (coffee: Icoffee) => void
-  cleanChart: () => void
+  cleanCoffeeList: () => void
 }
 
 interface IShoppingCartProviderProps {
@@ -25,23 +32,14 @@ export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
   )
 
   function addOrUpdateCoffeeList(coffee: Icoffee, amount: number) {
-    dispatch({
-      type: 'ADD_OR_UPDATE_COFFEE_LIST',
-      payload: {
-        coffee,
-        amount,
-      },
-    })
+    dispatch(addOrUpdateCoffeeListAction(coffee, amount))
   }
 
   function removeCoffeeFromList(coffee: Icoffee) {
-    dispatch({
-      type: 'REMOVE_COFFEE_FROM_LIST',
-      payload: { coffee },
-    })
+    dispatch(removeCoffeeFromListAction(coffee))
   }
 
-  function cleanChart() {
+  function cleanCoffeeList() {
     dispatch({
       type: 'CLEAN_COFFEE_LIST',
     })
@@ -54,7 +52,7 @@ export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
         totalCoffees,
         addOrUpdateCoffeeList,
         removeCoffeeFromList,
-        cleanChart,
+        cleanCoffeeList,
       }}
     >
       {children}

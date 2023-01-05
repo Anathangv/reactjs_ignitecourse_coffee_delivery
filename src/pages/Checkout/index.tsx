@@ -8,12 +8,10 @@ import * as zod from 'zod'
 import { Frame } from './components/Frame'
 import { PaymentMethodForm } from './components/PaymentMethodForm'
 import { OrderDetailForm } from './components/OrderDetailForm'
-import {
-  CoffeeListContext,
-  ISelectedCoffee,
-} from '../../contexts/ShoppingCartProvider'
+import { CoffeeListContext } from '../../contexts/ShoppingCartProvider'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ISelectedCoffee } from '../../reducers/coffeeList/reducer'
 
 /*
 TODO
@@ -61,7 +59,7 @@ export interface ISuccessInformation {
 
 export function Checkout() {
   const [submitLoading, setSubmitLoading] = useState(false)
-  const { selectedCoffeeList, cleanChart } = useContext(CoffeeListContext)
+  const { selectedCoffeeList, cleanCoffeeList } = useContext(CoffeeListContext)
 
   const navigate = useNavigate()
 
@@ -106,7 +104,7 @@ export function Checkout() {
       },
     })
 
-    cleanChart()
+    cleanCoffeeList()
     setSubmitLoading(false)
   }
 
