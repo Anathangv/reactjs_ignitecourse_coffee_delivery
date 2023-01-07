@@ -1,6 +1,6 @@
 import { produce } from 'immer'
 import { Icoffee } from '../../util/coffeesDB'
-import { ActionTypes } from './action'
+import { ActionsProps, ActionTypes } from './action'
 
 /*
 TODO
@@ -12,7 +12,10 @@ export interface ISelectedCoffee {
   amount: number
 }
 
-export function CoffeeListReducer(state: ISelectedCoffee[], action: any) {
+export function CoffeeListReducer(
+  state: ISelectedCoffee[],
+  action: ActionsProps,
+) {
   switch (action.type) {
     case ActionTypes.ADD_OR_UPDATE_COFFEE_LIST: {
       const selectedCoffeeIndex = state.findIndex(
@@ -49,5 +52,4 @@ export function CoffeeListReducer(state: ISelectedCoffee[], action: any) {
     default:
       return state
   }
-  // return state
 }

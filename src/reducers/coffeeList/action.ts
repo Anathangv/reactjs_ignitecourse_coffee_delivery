@@ -6,27 +6,44 @@ export const enum ActionTypes {
   CLEAN_COFFEE_LIST = 'CLEAN_COFFEE_LIST',
 }
 
-export function addOrUpdateCoffeeListAction(coffee: Icoffee, amount: number) {
+interface IAddOrUpdateCoffeeListAction {
+  type: ActionTypes.ADD_OR_UPDATE_COFFEE_LIST
+  payload: { coffee: Icoffee; amount: number }
+}
+
+interface IRemoveCoffeeFromListAction {
+  type: ActionTypes.REMOVE_COFFEE_FROM_LIST
+  payload: { coffee: Icoffee }
+}
+
+interface ICleanCoffeeList {
+  type: ActionTypes.CLEAN_COFFEE_LIST
+}
+
+export type ActionsProps =
+  | IAddOrUpdateCoffeeListAction
+  | IRemoveCoffeeFromListAction
+  | ICleanCoffeeList
+
+export function addOrUpdateCoffeeListAction(
+  coffee: Icoffee,
+  amount: number,
+): ActionsProps {
   return {
-    type: 'ADD_OR_UPDATE_COFFEE_LIST',
-    payload: {
-      coffee,
-      amount,
-    },
+    type: ActionTypes.ADD_OR_UPDATE_COFFEE_LIST,
+    payload: { coffee, amount },
   }
 }
 
-export function removeCoffeeFromListAction(coffee: Icoffee) {
+export function removeCoffeeFromListAction(coffee: Icoffee): ActionsProps {
   return {
-    type: 'REMOVE_COFFEE_FROM_LIST',
-    payload: {
-      coffee,
-    },
+    type: ActionTypes.REMOVE_COFFEE_FROM_LIST,
+    payload: { coffee },
   }
 }
 
-export function cleanCoffeeList() {
+export function cleanCoffeeListAction(): ActionsProps {
   return {
-    type: 'CLEAN_COFFEE_LIST',
-  }
+    type: ActionTypes.CLEAN_COFFEE_LIST,
+  } as ICleanCoffeeList
 }

@@ -1,6 +1,8 @@
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import {
+  ActionTypes,
   addOrUpdateCoffeeListAction,
+  cleanCoffeeListAction,
   removeCoffeeFromListAction,
 } from '../reducers/coffeeList/action'
 import {
@@ -8,6 +10,12 @@ import {
   ISelectedCoffee,
 } from '../reducers/coffeeList/reducer'
 import { Icoffee } from '../util/coffeesDB'
+import { version } from '../../package.json'
+
+/*
+TODO
+[] - is it possible when reload the home page, restore the select cards and amount
+*/
 
 interface ICofeeListContext {
   selectedCoffeeList: ISelectedCoffee[]
@@ -24,7 +32,30 @@ interface IShoppingCartProviderProps {
 export const CoffeeListContext = createContext({} as ICofeeListContext)
 
 export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
-  const [selectedCoffeeList, dispatch] = useReducer(CoffeeListReducer, [])
+  console.log(version)
+
+  const [selectedCoffeeList, dispatch] = useReducer(
+    CoffeeListReducer,
+    [],
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        `@coffee-delivery:selected-coffee-list-${version}`,
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+    },
+  )
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(selectedCoffeeList)
+
+    localStorage.setItem(
+      `@coffee-delivery:selected-coffee-list-${version}`,
+      stateJSON,
+    )
+  }, [selectedCoffeeList])
 
   const totalCoffees = selectedCoffeeList.reduce(
     (result, coffeeList) => result + coffeeList.amount,
@@ -40,9 +71,7 @@ export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
   }
 
   function cleanCoffeeList() {
-    dispatch({
-      type: 'CLEAN_COFFEE_LIST',
-    })
+    dispatch(cleanCoffeeListAction())
   }
 
   return (
