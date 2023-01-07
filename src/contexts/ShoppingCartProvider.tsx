@@ -45,6 +45,8 @@ export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+
+      return []
     },
   )
 
