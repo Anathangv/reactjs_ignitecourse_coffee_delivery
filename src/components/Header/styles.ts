@@ -5,10 +5,13 @@ interface ICart {
 }
 
 export const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 10rem;
+  background-color: ${(props) => props.theme.background};
 
   & > img {
     width: 5.309rem;
@@ -59,7 +62,7 @@ export const Badge = styled.span`
   right: -0.7rem;
   position: absolute;
   text-align: center;
-  padding: 0.2rem 0.4rem;
+  padding: 0.32rem 0.4rem;
   border-radius: 50%;
   background-color: ${(props) => props.theme['yellow-dark']};
   font-size: 0.75rem;
