@@ -2,11 +2,6 @@ import { produce } from 'immer'
 import { Icoffee } from '../../util/coffeesDB'
 import { ActionsProps, ActionTypes } from './action'
 
-/*
-TODO
-[] - include type for the parameter action 
-*/
-
 export interface ISelectedCoffee {
   coffee: Icoffee
   amount: number

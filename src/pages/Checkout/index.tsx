@@ -13,13 +13,6 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ISelectedCoffee } from '../../reducers/coffeeList/reducer'
 
-/*
-TODO
-[x] - include loading while submitting order
-[x] - set button not navigable while loadin
-[x] - if try access the page skipping the home, refirect to home page
-[x] - create not found page
-*/
 const PaymentMethods = {
   creditCard: 'Cartão de Credito',
   debitCard: 'Cartão de Débito',

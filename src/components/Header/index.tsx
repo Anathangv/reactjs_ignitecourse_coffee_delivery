@@ -4,12 +4,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react'
 import { HeaderContainer, LocationContainer, Cart, Badge } from './styles'
 import { useContext } from 'react'
 import { CoffeeListContext } from '../../contexts/ShoppingCartProvider'
-/*
-TODO
-[x] - include control to only clicl on cart if there is coffee selected
-[x] - include coffee count in the chart icon
-[] - keep the header fix while scrowlling down
-*/
+
 export function Header() {
   const { totalCoffees } = useContext(CoffeeListContext)
   const navegate = useNavigate()

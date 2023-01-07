@@ -58,15 +58,18 @@ export const Cart = styled.div<ICart>`
 `
 
 export const Badge = styled.span`
-  top: -0.7rem;
-  right: -0.7rem;
-  position: absolute;
-  text-align: center;
-  padding: 0.32rem 0.4rem;
+  top: calc(-1.25rem / 2);
+  right: calc(-1.25rem / 2);
   border-radius: 50%;
-  background-color: ${(props) => props.theme['yellow-dark']};
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.75rem;
   font-size: 700;
+  background-color: ${(props) => props.theme['yellow-dark']};
   color: ${(props) => props.theme.white};
 `
 
