@@ -4,6 +4,6 @@ interface ICoffeTypePorps {
   label: string
 }
 
-export function CoffeType({ label }: ICoffeTypePorps) {
+export function CoffeeType({ label }: ICoffeTypePorps) {
   return <CoffeTypeContainer>{label}</CoffeTypeContainer>
 }

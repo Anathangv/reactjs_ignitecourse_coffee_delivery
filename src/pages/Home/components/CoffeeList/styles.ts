@@ -16,10 +16,14 @@ export const CoffeeListContainer = styled.section`
 
   > div {
     width: 100%;
-    display: grid;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    /* display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 2rem;
+    column-gap: 0.3rem;
     row-gap: 2.5rem;
-    margin-top: 1rem;
+    margin-top: 1rem; */
   }
 `

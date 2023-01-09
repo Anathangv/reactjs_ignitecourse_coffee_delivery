@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const CoffeeCardContainer = styled.div`
+interface ICoffeeCardStyleProps {
+  isCoffeeSelected: boolean
+}
+
+export const CoffeeCardContainer = styled.div<ICoffeeCardStyleProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +15,8 @@ export const CoffeeCardContainer = styled.div`
   height: 19.375rem;
   border-radius: 6px 36px;
   background-color: ${(props) => props.theme['base-card']};
+  border: ${(props) =>
+    props.isCoffeeSelected ? `1px solid ${props.theme['yellow-dark']}` : null};
 
   & > div {
     display: flex;

@@ -7,13 +7,14 @@ import { ActionArea, BuyFormContainer, PriceArea } from './styles'
 
 interface IBuyControlsProps {
   coffee: Icoffee
+  savedAmount: number | null
 }
 
-export function BuyControls({ coffee }: IBuyControlsProps) {
+export function BuyControls({ coffee, savedAmount }: IBuyControlsProps) {
   const { addOrUpdateCoffeeList, removeCoffeeFromList } =
     useContext(CoffeeListContext)
 
-  const [coffeeAmount, setCoffeeAmount] = useState<number>(0)
+  const [coffeeAmount, setCoffeeAmount] = useState<number>(savedAmount || 1)
 
   function handleBuyCoffee() {
     if (coffeeAmount > 0) {
