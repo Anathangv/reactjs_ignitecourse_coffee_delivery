@@ -8,7 +8,9 @@ interface IOrderInfoItemProps {
 export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 5rem auto;
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
   width: 70rem;
 
   & > div {

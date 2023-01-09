@@ -5,12 +5,16 @@ interface ICart {
 }
 
 export const HeaderContainer = styled.header`
+  max-width: 70rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem;
+  padding: 2rem 0rem;
   background-color: ${(props) => props.theme.background};
 
   & > img {

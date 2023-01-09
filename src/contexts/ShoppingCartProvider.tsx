@@ -12,11 +12,6 @@ import {
 import { Icoffee } from '../util/coffeesDB'
 import { version } from '../../package.json'
 
-/*
-TODO
-[] - is it possible when reload the home page, restore the select cards and amount
-*/
-
 interface ICofeeListContext {
   selectedCoffeeList: ISelectedCoffee[]
   totalCoffees: number

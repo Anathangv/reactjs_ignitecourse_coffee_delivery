@@ -4,7 +4,9 @@ export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  margin: 2.5rem auto;
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
   width: 70rem;
   justify-content: center;
 
