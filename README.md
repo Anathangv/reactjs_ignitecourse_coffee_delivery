@@ -55,12 +55,11 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot]![image](https://user-images.githubusercontent.com/14235259/211229921-9df74ec4-cc5c-4ba3-b8be-bb81fb16cb36.png)
 
+![image](https://user-images.githubusercontent.com/14235259/211230007-75096200-edb1-4088-ab98-db0df081ca97.png)
 
-![App Screenshot](![image](![image](https://user-images.githubusercontent.com/14235259/211229385-5f8b0e32-2d4d-472b-bbbd-d3969a7ac6d2.png))
+![image](https://user-images.githubusercontent.com/14235259/211230073-f9835efc-53c8-40d7-bfb5-bb5de78a860c.png)
 
-![App Screenshot](![image](https://user-images.githubusercontent.com/14235259/211229396-6d0681dd-51a6-40c5-96b0-f8be0d727367.png))
+![image](https://user-images.githubusercontent.com/14235259/211230091-da493c3b-84f2-4977-bef7-d313c5657a35.png)
 
-![App Screenshot](![image](https://user-images.githubusercontent.com/14235259/211229427-9aee2c0d-7f98-46b0-813f-81628939f440.png))
-
+![image](https://user-images.githubusercontent.com/14235259/211229921-9df74ec4-cc5c-4ba3-b8be-bb81fb16cb36.png)
