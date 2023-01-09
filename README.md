@@ -55,7 +55,7 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](![image](https://user-images.githubusercontent.com/14235259/211229304-c2a8bb3b-6025-4f28-9c3a-8a9338b8a308.png))
+![App Screenshot](![image](https://user-images.githubusercontent.com/14235259/211229878-a265cb51-4d0a-4393-a91f-811b39472a30.png))
 
 ![App Screenshot](![image](![image](https://user-images.githubusercontent.com/14235259/211229385-5f8b0e32-2d4d-472b-bbbd-d3969a7ac6d2.png))
 
