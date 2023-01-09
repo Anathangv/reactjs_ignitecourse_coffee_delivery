@@ -6,6 +6,10 @@ It comes with shopping cart.
 As part of the React course by Rocketseat focused on front-end development, no backend was implemented in this app.
 
 
+## Demo
+
+https://reactjs-ignitecourse-coffee-delivery.vercel.app/
+
 
 
 ## Tech Stack
