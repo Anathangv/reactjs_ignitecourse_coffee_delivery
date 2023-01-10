@@ -27,8 +27,6 @@ interface IShoppingCartProviderProps {
 export const CoffeeListContext = createContext({} as ICofeeListContext)
 
 export function ShoppingCartProvider({ children }: IShoppingCartProviderProps) {
-  console.log(version)
-
   const [selectedCoffeeList, dispatch] = useReducer(
     CoffeeListReducer,
     [],

@@ -76,7 +76,6 @@ export function Checkout() {
   async function handleCreateNewDeliveryAddress(
     deliveryAddress: CoffeeDeliverFormData,
   ) {
-    console.log('handleSubmit', deliveryAddress)
     const order: ICheckoutOrder = {
       coffees: selectedCoffeeList,
       deliveryAddress,
